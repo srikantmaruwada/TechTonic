@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    <title>House of Offers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery.mobile.structure-1.0.1.css" />
+    <link rel="stylesheet" href="jquery.mobile-1.0.1.css" />
+    <link rel="stylesheet" href="custom.css" />
+    
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery.mobile-1.0.1.min.js"></script>
+    <script src="js/menu.js"></script>
+
+    <script type="text/javascript">
+        if (sessionStorage.getItem("FacebookName") != null) {
+            $.ajax({
+                url: "http://172.27.52.13/HooServices/api/Values/GetOffersByPreferences?preferences=Musical Events",
+                dataType: 'json',
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    var categories = [];
+                    $.each(results.Offers, function (index, value) {
+                        if ($.inArray(value.OfferCategory, categories) === -1) {
+                            categories.push(value.OfferCategory);
+                        }
+                    });
+
+                    for (var i = 0; i < categories.length; i++) {
+                        var tblRow0 = "<br/><li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>By your preferences</li>";
+                        var tblRow1 = "<li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>" + categories[i] + "</li>";
+                        var tblRow2 = "";
+                        for (var j = 0; j < results.Offers.length; j++) {
+                            if (categories[i] == results.Offers[j].OfferCategory) {
+                                var classStar = "";
+
+                                if (results.Offers[j].Ratings == 1) {
+                                    classStar = "classement one";
+                                }
+                                else if (results.Offers[j].Ratings == 2) {
+                                    classStar = "classement two";
+                                }
+                                else if (results.Offers[j].Ratings == 3) {
+                                    classStar = "classement three";
+                                }
+                                else {
+                                    classStar = "classement four";
+                                }
+                                tblRow2 = tblRow2 + "<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c' data-theme='c'> <div class='ui-btn-inner ui-li'><div class=ui-btn-text><a  href='OfferDetail1.html' data-transition='slidedown' class='ui-link-inherit' onclick='SaveStorage(" + results.Offers[j].OfferId + "," + results.Offers[j].Vendor.SupplierId + ");' ><img src=" + results.Offers[j].ImageUrl + " class='ui-li-thumb'/><h2 class='ui-li-heading'>" + results.Offers[j].OfferTitle + "</h2><p class='" + classStar + " ui-li-desc'>" + results.Offers[j].Ratings + " </p></a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'></span></div></li>"
+                            }
+                        }
+                        if (i == 0)
+                            $(tblRow0).appendTo("#DIvOffers");
+                        $(tblRow1).appendTo("#DIvOffers");
+                        $(tblRow2).appendTo("#DIvOffers");
+                    }
+                },
+                error: function (ex) {
+                    alert("error" + ex.error);
+                }
+            });
+
+        }
+        else {
+            $.ajax({
+                url: "http://172.27.52.13/HooServices/api/Values/GetAllOffers",
+                dataType: 'json',
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    var categories = [];
+                    $.each(results.Offers, function (index, value) {
+                        if ($.inArray(value.OfferCategory, categories) === -1) {
+                            categories.push(value.OfferCategory);
+                        }
+                    });
+
+                    for (var i = 0; i < categories.length; i++) {
+                        var tblRow0 = "<br/><li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>Most Popular</li>";
+                        var tblRow1 = "<li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>" + categories[i] + "</li>";
+                        var tblRow2 = "";
+                        for (var j = 0; j < results.Offers.length; j++) {
+                            if (categories[i] == results.Offers[j].OfferCategory) {
+                                var classStar = "";
+
+                                if (results.Offers[j].Ratings == 1) {
+                                    classStar = "classement one";
+                                }
+                                else if (results.Offers[j].Ratings == 2) {
+                                    classStar = "classement two";
+                                }
+                                else if (results.Offers[j].Ratings == 3) {
+                                    classStar = "classement three";
+                                }
+                                else {
+                                    classStar = "classement four";
+                                }
+                                tblRow2 = tblRow2 + "<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c' data-theme='c'> <div class='ui-btn-inner ui-li'><div class=ui-btn-text><a  href='OfferDetail1.html' data-transition='slidedown' class='ui-link-inherit' onclick='SaveStorage(" + results.Offers[j].OfferId + "," + results.Offers[j].Vendor.SupplierId + ");' ><img src=" + results.Offers[j].ImageUrl + " class='ui-li-thumb'/><h2 class='ui-li-heading'>" + results.Offers[j].OfferTitle + "</h2><p class='" + classStar + " ui-li-desc'>" + results.Offers[j].Ratings + " </p></a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'></span></div></li>"
+                            }
+                        }
+                        if (i == 0)
+                            $(tblRow0).appendTo("#DIvOffers");
+                        $(tblRow1).appendTo("#DIvOffers");
+                        $(tblRow2).appendTo("#DIvOffers");
+                    }
+                },
+                error: function (ex) {
+                    alert("error" + ex.error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geo location not enabled.");
+            }
+        });
+
+        function showPosition(position) {
+
+            $.ajax({
+                url: "http://172.27.52.13/HooServices/api/Values/GetOffersByLatLong?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude,
+                dataType: 'json',
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    var categories = [];
+                    if (results.Offers != null) {
+                        $.each(results.Offers, function (index, value) {
+                            if ($.inArray(value.OfferCategory, categories) === -1) {
+                                categories.push(value.OfferCategory);
+                            }
+                        });
+                        var tblRow0 = "<br/><li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>By Location</li>";
+                        for (var i = 0; i < categories.length; i++) {
+                            var tblRow1 = "<li class='ui-li ui-li-static ui-body-c ui-corner-top' role='heading'>" + categories[i] + "</li>";
+                            var tblRow2 = "";
+                            for (var j = 0; j < results.Offers.length; j++) {
+                                if (categories[i] == results.Offers[j].OfferCategory) {
+                                    var classStar = "";
+
+                                    if (results.Offers[j].Ratings == 1) {
+                                        classStar = "classement one";
+                                    }
+                                    else if (results.Offers[j].Ratings == 2) {
+                                        classStar = "classement two";
+                                    }
+                                    else if (results.Offers[j].Ratings == 3) {
+                                        classStar = "classement three";
+                                    }
+                                    else {
+                                        classStar = "classement four";
+                                    }
+                                    tblRow2 = tblRow2 + "<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c' data-theme='c'> <div class='ui-btn-inner ui-li'><div class=ui-btn-text><a  href='OfferDetail1.html' data-transition='slidedown' class='ui-link-inherit' onclick='SaveStorage(" + results.Offers[j].OfferId + "," + results.Offers[j].Vendor.SupplierId + ");' ><img src=" + results.Offers[j].ImageUrl + " class='ui-li-thumb'/><h2 class='ui-li-heading'>" + results.Offers[j].OfferTitle + "</h2><p class='" + classStar + " ui-li-desc'>" + results.Offers[j].Ratings + " </p></a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'></span></div></li>"
+                                }
+                            }
+                            $(tblRow0).appendTo("#DIvOffers");
+                            $(tblRow1).appendTo("#DIvOffers");
+                            $(tblRow2).appendTo("#DIvOffers");
+                        }
+                    }
+                },
+                error: function (ex) {
+                    alert("error" + ex.error);
+                }
+            });
+        }
+
+        function SaveStorage(OfferId, SupplierId) {
+            sessionStorage.setItem("OfferId", OfferId);
+
+            $(function () {
+                var ratings = { OfferId: OfferId, SupplierId: SupplierId };
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(ratings),
+                    url: "http://172.27.52.13/HooServices/api/Values/AddOfferHitCount",
+                    contentType: "application/json",
+                    success: function (results) {
+                        //alert("success");
+                    },
+                    error: function (ex) {
+                        alert("error" + ex);
+                    }
+                });
+            });
+            //window.location.href = 'OfferDetail1.html';
+            
+        }
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1596904673904280', // App ID
+                channelUrl: 'http://hayageek.com/examples/oauth/facebook/oauth-javascript/channel.html', // Channel File
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true, // parse XFBML
+                version: 'v2.4'
+            });
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+            FB.Event.subscribe('auth.authResponseChange', function (response) {
+                if (response.status === 'connected') {
+                    //document.getElementById("message").innerHTML += "<br>Connected to Facebook";
+                    //SUCCESS
+
+                }
+                else if (response.status === 'not_authorized') {
+                    //document.getElementById("message").innerHTML += "<br>Failed to Connect";
+                    //FAILED
+                } else {
+                    //document.getElementById("message").innerHTML += "<br>Logged Out";
+                    //UNKNOWN ERROR
+                }
+            });
+
+        };
+
+        function Login() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    getUserInfo();
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { scope: 'email,user_photos,user_videos' });
+
+
+        }
+
+        function getUserInfo() {
+            FB.api('/me', function (response) {
+                sessionStorage.setItem("FacebookName", response.name);
+                window.location.href("home.html");
+            });
+        }
+
+        function getPhoto() {
+            FB.api('/me/picture?type=normal', function (response) {
+
+                var str = "<br/><b>Pic</b> : <img src='" + response.data.url + "'/>";
+                document.getElementById("status").innerHTML += str;
+
+            });
+        }
+
+        //function Logout() {
+        //    FB.logout(function () { document.location.reload(); });
+        //}
+
+        // Load the SDK asynchronously
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+    </script>
+</head>
+
+<body>
+    <div id="choisir_restau" data-role="page">
+
+        <div class="wrap">
+            <div class="logoMain">
+                <a href="#" title="HOO Logo">
+                    <img src="images/logo.png" alt="Logo">
+                </a>
+                <div class="clear"></div>
+            </div>
+            <nav class="menu">
+                <ul class="active">
+                    <li><a href="home.html" ">Home</a></li>
+                    <li><a href="#" onclick="Login()">Facebook Login</a></li>
+                </ul>
+                <a class="toggle-nav" href="#">&#9776;</a>
+
+            </nav>
+            <div class="clear"></div>
+        </div>
+        <!--end .wrap-->
+        <div>
+            
+        </div>
+
+        <div data-role="content">
+            <span style="font-size: 12px; text-align: right; float: right; padding-right: 2px"><span id="spanName"></span></span>
+            <div class="choice_list">
+                <ul data-role="listview" data-inset="true" data-filter="true" id="DIvOffers" class='ui-listview ui-listview-inset ui-corner-all ui-shadow'>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /page -->
+</body>
+
+<script type="text/javascript">
+    if (sessionStorage.getItem("FacebookName") != null) {
+        document.getElementById("spanName").outerText = "Welcome  " + sessionStorage.getItem("FacebookName");
+    }
+    else {
+        document.getElementById("spanName").style.display = "none";
+    }
+</script>
+</html>

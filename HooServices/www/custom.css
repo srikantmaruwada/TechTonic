@@ -1,0 +1,419 @@
+/*** general styling */
+.ui-page.ui-body-c{
+background:url(images/bg.png);
+box-shadow:  0px 0px 30px 5px rgba(107, 105, 105, 0.3) inset,
+ 0px 0px 0px 1px rgba(107, 105, 105, 0.4) inset;
+
+}
+
+.ui-icon.ui-icon-arrow-r {
+background-color:rgb(136, 111, 110);
+}
+.ui-corner-all, 
+.ui-corner-top,
+.ui-corner-bottom,
+.ui-corner-tl,
+.ui-corner-tr,
+.ui-corner-bl,
+.ui-header .ui-btn-corner-all,
+.ui-listview-filter .ui-btn-corner-all,
+#restau_infos .ui-btn-corner-all,
+#contact_buttons .ui-btn-corner-all,
+#notation .ui-btn-corner-all{
+border-radius:0.2em;
+}
+
+.ui-btn-active {
+background: #654644; /* Old browsers */
+background: -moz-linear-gradient(top,  #654644 0%, #331c1b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#654644), color-stop(100%,#331c1b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #654644 0%,#331c1b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #654644 0%,#331c1b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #654644 0%,#331c1b 100%); /* IE10+ */
+background: linear-gradient(top,  #654644 0%,#331c1b 100%); /* W3C */
+color:#fff !important;
+}
+.ui-content .choice_list  .ui-btn-active .ui-link-inherit,
+.ui-btn-down-c a.ui-link-inherit,
+#home .ui-btn-down-c a.ui-link-inherit{
+color:#fff !important;
+}
+
+img{
+max-width: 100%;
+height: auto; width: auto;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+.ui-grid-a .ui-block-a, .ui-grid-a .ui-block-b {
+    width: 48%;
+    padding:1%;
+}
+
+
+
+
+
+/* title bar */
+.ui-header.ui-bar-a{
+background:url(images/header_bg.png);
+}
+.ui-header .ui-title {
+text-indent:-9999px;
+font-size:0px;
+/*background:url(images/header_logo.png) no-repeat 69% 5px ;*/
+height:33px;
+padding:5px 0 5px 50px;
+margin:0px;
+}
+
+.ui-header  .ui-btn-up-a  {
+background:rgba(255, 255, 255, 0.1);
+box-shadow:none;
+}
+.ui-header  .ui-btn-hover-a {
+background:rgba(0, 0, 0, 0.3);
+box-shadow:none;
+}
+
+
+
+
+/*** home **/
+
+#branding{
+/*background:url(images/logo.png) no-repeat;*/
+width:322px;
+/*height:165px;*/
+/*text-indent:-999px;*/
+font-size:24px;
+/*margin:-10px auto 0 auto;*/
+margin:auto;
+/*border-bottom:1px solid rgba(65, 38, 37, 0.6);*/
+}
+
+.choice_list h1{
+margin-top:30px;
+font-size:18px;
+color:rgb(65, 38, 37);
+font-weight:normal;
+font-style:italic;
+padding:5px 0 6px 50px;
+background:url(images/pagination.png) no-repeat;
+}
+
+#home .choice_list h1{
+background-position: 0 -16px;
+}
+#home .choice_list  h3{
+padding-top:10px;
+color:rgb(63, 41, 39);
+}
+#home .choice_list .ui-btn-active  a.ui-link-inherit h3{
+color:#fff;
+}
+.choice_list  img{
+padding:3px;
+}
+
+
+
+/** Chose the town **/
+
+#choisir_ville .choice_list h1{
+background-position: 0 -72px;
+margin-bottom:20px;
+}
+#choisir_ville .choice_list a{
+padding-top:10px;
+color:rgb(63, 41, 39);
+}
+#choisir_ville .ui-listview-filter a{
+padding-top:0px;
+}
+
+
+/** choix du restaurant **/
+#choisir_restau .choice_list h1{
+background-position: 0 -132px;
+margin:10px auto 20px auto;
+}
+#choisir_restau .choice_list a{
+padding-top:10px;
+color:rgb(63, 41, 39);
+}
+
+#choisir_restau .classement{
+display:inline-bloc;
+background:url(images/pagination.png) no-repeat  0 -182px;
+height:22px;
+text-indent:-999px;
+font-size:0px;
+}
+
+#choisir_restau .one{
+width:30px;
+}
+#choisir_restau .two{
+width:55px;
+}
+#choisir_restau .three{
+width:75px;
+}
+#choisir_restau .four{
+width:99px;
+}
+
+
+
+
+
+
+
+/** restau **/
+#restau_infos,
+#contact_infos {
+color:rgb(63, 41, 39);
+font-size:14px;
+}
+#restau_infos h1,
+#contact_infos h2,
+#notation h2{
+color:rgb(63, 41, 39);
+font-size:18px;
+margin:0 auto 5px auto;
+}
+
+#restau_infos p,
+#restau_infos ul,
+#contact_infos p{
+margin:2px auto 5px auto;
+}
+#restau_infos ul{
+padding:0 0 0 10px;
+}
+#restau_infos ul  li{
+list-style-type:square;
+margin-left:5px;
+}
+
+#restau_infos .ui-block-b .ui-btn {
+font-size:12px;
+}
+#restau_infos .ui-block-b .ui-btn-inner{
+padding:5px;
+}
+
+#contact_buttons a{
+color:rgb(63, 41, 39);
+}
+
+.ui-icon-maps {
+background: rgb(63, 41, 39) url(images/maps.png) no-repeat;
+}
+.ui-icon-tel{
+background: rgb(63, 41, 39) url(images/phone.png) no-repeat;
+}
+
+/** add the stars to the drop down */
+#note_utilisateur-menu a{
+padding-left:100px;
+position:relative;
+}
+
+#note_utilisateur-button span.ui-btn-text{
+background:url(images/pagination.png) no-repeat;
+} 
+
+#note_utilisateur-button span.ui-btn-inner{
+	padding-left:5px;
+} 
+
+#note_utilisateur-menu li a:before{
+content: "   ";
+display:inline-block;
+width:115px;
+height:20px;
+background:url(images/pagination.png) no-repeat;
+position:absolute;
+left:0px;
+}
+.one #note_utilisateur-button span.ui-btn-text,
+#note_utilisateur-menu li a:before{
+background-position: -75px -182px;
+}
+.two #note_utilisateur-button span.ui-btn-text,
+#note_utilisateur-menu li + li a:before{
+background-position: -52px -182px;
+}
+.three #note_utilisateur-button span.ui-btn-text,
+#note_utilisateur-menu li + li +li a:before{
+background-position: -27px -182px;
+}
+.four #note_utilisateur-button span.ui-btn-text,
+#note_utilisateur-menu li + li +li +li a:before{
+background-position: -2px -182px;
+}
+
+
+body {
+	background:#e3e3e3 url('body-bg.png');
+}
+
+.wrap {
+	/*width:100%;
+	max-width:1000px;*/
+	margin:5px 15px 0;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	background-color:#999;
+	
+  	
+}
+
+.menu{ -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;}
+/*----- Toggle Button -----*/
+.toggle-nav {
+    display:none;
+}
+
+.menu a {  font-weight:normal !important; text-decoration:none; }
+.menu a.toggle-nav {padding:25px 20px; background:#303030 url(images/imgLine.png) no-repeat center; width:16px; height:15px; }
+.menu a.toggle-nav:hover { background:#303030 url(images/imgLineHover.png) no-repeat center; }
+.logoMain { margin:2px auto; width:320px; height:40px;  display:table; }
+.logoMain a { vertical-align:middle; display:table-cell; }
+.logoMain a img {
+    padding-right: 10px;
+    width: 100%;
+}
+.ui-listview-filter {
+    margin-bottom: -10px;
+    margin-top: -5px;
+}
+/*----- Menu -----*/
+@media screen and (min-width: 860px) {
+    .menu {
+        width:100%;
+        padding:10px 18px;
+        box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+        border-radius:3px;
+        background:#303030;
+    }
+}
+
+.menu ul {
+    display:inline-block;
+}
+
+.menu li {
+    margin:0px 50px 0px 0px;
+    float:left;
+    list-style:none;
+    font-size:17px;
+}
+
+.menu li:last-child {
+    margin-right:0px;
+}
+
+.menu a {
+    text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+    color:#777 !important;
+    transition:color linear 0.15s;
+	
+}
+
+.menu a:hover, .menu .current-item a {
+    text-decoration:none;
+    color:#FF8400 !important;
+}
+
+.clear { clear:both; }
+
+
+/*----- Responsive -----*/
+@media screen and (max-width: 1150px) {
+}
+
+@media screen and (max-width: 970px) {
+    .search-form input {
+        width:120px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .menu {
+        position:relative;
+        display:inline-block;
+		float:left;
+    }
+	.logoMain { float:right; width:320px;}
+
+    .menu ul.active {
+        display:none;
+    }
+
+    .menu ul {
+        width:150px;
+        position:absolute;
+        top:120%;
+        left:0px;
+        padding:10px 18px;
+        box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+        border-radius:3px;
+        background:#303030;
+    }
+
+    .menu ul:after {
+        width:0px;
+        height:0px;
+        position:absolute;
+        top:0%;
+        left:22px;
+        content:'';
+        transform:translate(0%, -100%);
+        border-left:7px solid transparent;
+        border-right:7px solid transparent;
+        border-bottom:7px solid #303030;
+    }
+
+    .menu li {
+        margin:5px 0px 5px 0px;
+        float:none;
+        display:block;
+    }
+
+    .menu a {
+        display:block;
+    }
+
+    .toggle-nav {
+        padding:20px;
+        float:left;
+        display:inline-block;
+        box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+        border-radius:3px;
+        background:#303030;
+        text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+        color:#777;
+        font-size:20px;
+        transition:color linear 0.15s;
+    }
+
+    .toggle-nav:hover, .toggle-nav.active {
+        text-decoration:none;
+        color:#66a992;
+    }
+    
+    .menu ul { top: 88%;
+    z-index: 10; }    
+}
+
+
+@media screen and (max-width: 480px) {
+	.logoMain { float:right; width:75%;}
+}

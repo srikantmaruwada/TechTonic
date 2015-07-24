@@ -1,0 +1,18 @@
+﻿{
+   "offers": [
+       {
+           "title": "Banana Ride offers from 1st Aug",
+           "description": "",
+           "stars": "4 stars",
+           "imageurl": "images/banana-boat.jpg",
+		   "page": "OfferDetail.html"
+       },
+       {
+          "title": "Parasailing Offers",
+           "description": "",
+           "stars": "4 stars",
+           "imageurl": "images/Parasailing.jpg",
+		   "page": "OfferDetail1.html"
+       }
+   ]
+}

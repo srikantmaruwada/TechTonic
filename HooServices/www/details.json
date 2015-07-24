@@ -1,0 +1,14 @@
+﻿{
+   "details": [
+       {
+           "title": "<h1>Goa Beach Huts</h1><p><strong>Parasailing Adventure only at Rs.300 and four 2 persons at Rs.500</strong></p><p>Other Games: </p><ul><li>Bump Rides</li><li>Ringo Rides </li></ul>",
+           "imageurl": "images/Parasailing.jpg",
+		   "altname": "jeannette photo",
+		   "imagecontact": "images/01_maps.jpg",
+		   "altcontactname": "plan jeanette",
+		   "contactdetails": "<h2>Contact us</h2><p>Baga Bazar, Near Nazri Resort</p><p>Baga, Goa</p>",
+		   "tel": "tel:0388161072",
+		   "map": "https://www.google.co.in/maps/place/Atlantis+Water+Sports/@15.5521297,73.7530936,17z/data=!3m1!4b1!4m2!3m1!1s0x3bbfea038e6480ad:0x34d2f2e25470208f"
+       }
+   ]
+}
